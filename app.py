@@ -20,11 +20,14 @@ def exist_container(name):
 def add():
     username = request.form.get('username')
     password = request.form.get('password')
-    if(exist_container(username)==False):
-        client.containers.run('mosoteach',[username, password],name=username,detach=True)
-        return jsonify(code=200,msg=username+'，任务创建成功')
+    if(username!='' and password!=''):
+        if(exist_container(username)==False):
+            client.containers.run('mosoteach',[username, password],name=username,detach=True)
+            return jsonify(code=200,msg=username+'，任务创建成功')
+        else:
+            return jsonify(code=204,msg=username+'，任务已存在')
     else:
-        return jsonify(code=204,msg=username+'，任务已存在')
+        return jsonify(code=204,msg='缺少用户名或密码')
 
 # 删除容器
 @app.route('/delete', methods=['POST'])
