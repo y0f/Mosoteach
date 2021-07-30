@@ -40,9 +40,9 @@ def delete():
         return jsonify(code=200,msg=username+'，任务删除成功')
     return jsonify(code=204,msg=username+'，任务不存在')
     
-# 删除容器
+# 删除所有容器
 @app.route('/delete_all', methods=['POST'])
-def delete():
+def delete_all():
     security_code = request.form.get('security_code')
     if(security_code=='NstevKwt2nMbtdkC'):
         for container in client.containers.list():
