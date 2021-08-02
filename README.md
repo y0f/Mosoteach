@@ -114,7 +114,7 @@ def delete():
 def delete_all():
     security_code = request.form.get('security_code')
     if(security_code=='NstevKwt2nMbtdkC'):
-        for container in client.containers.list():
+        for container in client.containers.list(all):
             container.stop()
             container.remove()
         return jsonify(code=200,msg=args+'，所有任务删除成功')
