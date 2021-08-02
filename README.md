@@ -109,7 +109,7 @@ def delete():
         return jsonify(code=200,msg=args+'，任务删除成功')
     return jsonify(code=204,msg=args+'，任务不存在')
     
-# 删除容器
+# 删除所有容器
 @app.route('/delete_all', methods=['POST'])
 def delete_all():
     security_code = request.form.get('security_code')
